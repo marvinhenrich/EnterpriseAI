@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rechte &amp; Einstufung · EnterpriseAI</title>
+<meta name="description" content="Selbst betriebene KI-Assistenz für Unternehmen. Dokumentation zu Installation, Unternehmens-Konfiguration, Modulen und Datenklassifizierung.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="marke" href="index.html">Enterprise<span>AI</span></a>
+  <nav>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext</a>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI/releases">Ausgaben</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <aside>
+    <nav>
+      <h4>Einstieg</h4>
+      <a href="index.html">EnterpriseAI</a>
+      <a href="installation.html">Installation</a>
+      <h4>Einrichten</h4>
+      <a href="unternehmen.html">Unternehmen</a>
+      <a href="module.html">Module</a>
+      <h4>Betreiben</h4>
+      <a href="sicherheit.html" aria-current="page">Rechte &amp; Einstufung</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Rechte &amp; Einstufung</h1>
+    <p class="lead">Anmeldung, Berechtigungen und vier Vertraulichkeitsstufen.</p>
+
+
+    <h2>Anmeldung</h2>
+    <p>Gegen <b>Active Directory</b> per LDAP-Bind, mit mehreren Domänencontrollern und
+    Ausweichadresse. Ein Dienstkonto ist nicht nötig — gebunden wird als
+    <code>&lt;benutzer&gt;@&lt;suffix&gt;</code>.</p>
+
+    <p>Ohne AD funktionieren lokale Konten. Beides parallel ist möglich, und der lokale
+    Administrator bleibt als Notzugang bestehen, falls das AD nicht erreichbar ist.</p>
+
+    <div class="hinweis"><p>Über <code>AD_REQUIRED_GROUP</code> lässt sich die Anmeldung auf
+    Mitglieder einer Gruppe beschränken. Leer heißt: jeder im Verzeichnis darf.</p></div>
+
+    <h2>Berechtigungen</h2>
+    <p>Fein je Nutzer und Gruppe, nicht als grobe Rollen. Wer den Vault pflegen darf, muss
+    nicht auch Benutzer anlegen dürfen.</p>
+
+    <h2>Datenklassifizierung</h2>
+    <p>Vier Stufen von <i>offen</i> bis <i>streng vertraulich</i>. Der entscheidende Punkt ist,
+    dass die Einstufung nicht nur ein Etikett ist, sondern <strong>bis in die Suche durchgesetzt
+    wird</strong>: Was jemand nicht sehen darf, taucht in seinen Ergebnissen nicht auf — auch
+    nicht als Fundstelle ohne Inhalt.</p>
+
+    <div class="achtung"><p><b>Eine eingestufte Datei stuft das ganze Gespräch hoch.</b> Sonst
+    ließe sich die Einstufung aushebeln, indem man das Dokument anhängt und die KI bittet, den
+    Inhalt in eigenen Worten zusammenzufassen.</p></div>
+
+    <p>Weiter gilt in einem eingestuften Gespräch: Die KI formuliert daraus keine
+    allgemeingültigen Merksätze fürs Firmenwissen, und sie schlägt von sich aus nicht vor, die
+    Inhalte zu teilen, zu exportieren oder in den Vault aufzunehmen.</p>
+
+    <h2>Was den Rechner nie verlässt</h2>
+    <div class="tabelle"><table><tbody>
+      <tr><td><b>Sprachmodell</b></td><td>Läuft lokal über Ollama.</td></tr>
+      <tr><td><b>Texterkennung</b></td><td>Offline, Tesseract wird mitgeliefert.</td></tr>
+      <tr><td><b>Suche</b></td><td>Vektoren werden lokal berechnet und lokal gespeichert.</td></tr>
+      <tr><td><b>Dateien</b></td><td>Liegen im Ordner <code>config/</code>, sonst nirgends.</td></tr>
+    </tbody></table></div>
+
+    <h2>Sichern</h2>
+<pre><code>tar czf sicherung.tar.gz config/</code></pre>
+    <div class="achtung"><p>Darin liegen <b>Datenbank, hochgeladene Dateien und der
+    Sicherheitsschlüssel</b>. Ohne den Schlüssel sind alle Anmeldungen ungültig; ohne die
+    Datenbank ist alles weg. Diese Sicherung gehört an einen anderen Ort als den Server.</p></div>
+
+
+    <footer>
+      <p>EnterpriseAI — <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext auf GitHub</a>.
+      Diese Seite wird direkt aus dem Repository ausgeliefert.</p>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>

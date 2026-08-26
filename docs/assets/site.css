@@ -1,0 +1,168 @@
+/* =============================================================================
+   Dokumentations-Website — gemeinsame Gestaltung
+   =============================================================================
+   Bewusst reines CSS ohne Framework
+   und ohne Bauschritt: GitHub Pages liefert die Dateien so aus, wie sie im
+   Repository liegen. Was hier steht, ist das, was ankommt.
+
+   Schriften: Lexend und Source Sans 3 werden von Google Fonts geladen, mit
+   Systemketten als Rueckfall. Laedt der Dienst nicht, sieht die Seite immer
+   noch richtig aus - nur mit anderer Schrift.
+   ========================================================================== */
+
+:root {
+  --teal:        #0F6E56;
+  --teal-dark:   #0B5643;
+  --teal-light:  #1D9E75;
+  --teal-tint:   #E9F1EE;
+
+  --ink:         #17181B;
+  --body:        #474C55;
+  --muted:       #6A6F79;
+  --faint:       #8C919A;
+
+  --paper:       #FAF9F5;
+  --surface:     #FFFFFF;
+  --warm:        #F7F1E8;
+  --border:      #E6E2D8;
+  --border-strong: #D6D1C4;
+
+  --warn:        #A8431F;
+  --warn-tint:   #FBF0EA;
+  --warn-border: #EFD9CC;
+
+  --radius-sm: 8px;
+  --radius:    12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 1px 2px rgba(28,25,18,.05), 0 2px 6px -1px rgba(28,25,18,.06);
+  --shadow-md: 0 2px 4px rgba(28,25,18,.04), 0 10px 22px -8px rgba(28,25,18,.13);
+
+  --font-display: "Lexend", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans:    "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --seitenleiste: 264px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --teal: #45C47C; --teal-dark: #2E9A5F; --teal-light: #6FD99A; --teal-tint: #16301F;
+    --ink: #F0EFE9; --body: #C2C1B8; --muted: #8B8A80; --faint: #6F6E66;
+    --paper: #141513; --surface: #1C1E1B; --warm: #232520;
+    --border: #2E312C; --border-strong: #3C4039;
+    --warn: #E0A271; --warn-tint: #32241A; --warn-border: #4A3626;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--body);
+  font: 16px/1.68 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Kopfleiste ---------------------------------------------------------- */
+.topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 24px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar .marke {
+  font: 600 17px/1 var(--font-display);
+  color: var(--ink); text-decoration: none; letter-spacing: -.2px;
+}
+.topbar .marke span { color: var(--teal); }
+.topbar nav { margin-left: auto; display: flex; gap: 18px; }
+.topbar nav a { color: var(--muted); text-decoration: none; font-size: 14.5px; }
+.topbar nav a:hover { color: var(--teal); }
+
+/* --- Grundgerüst --------------------------------------------------------- */
+.wrap { display: grid; grid-template-columns: var(--seitenleiste) minmax(0,1fr); gap: 48px;
+        max-width: 1180px; margin: 0 auto; padding: 40px 24px 96px; }
+
+aside { position: sticky; top: 76px; align-self: start; max-height: calc(100vh - 96px); overflow-y: auto; }
+aside h4 { margin: 22px 0 8px; font: 600 11.5px/1 var(--font-mono);
+           letter-spacing: 1.1px; text-transform: uppercase; color: var(--faint); }
+aside h4:first-child { margin-top: 0; }
+aside a { display: block; padding: 5px 10px; margin-left: -10px; border-radius: var(--radius-sm);
+          color: var(--body); text-decoration: none; font-size: 14.5px; }
+aside a:hover { background: var(--warm); color: var(--ink); }
+aside a[aria-current="page"] { background: var(--teal-tint); color: var(--teal); font-weight: 600; }
+
+main { min-width: 0; }
+
+/* --- Typografie ---------------------------------------------------------- */
+h1 { font: 600 38px/1.16 var(--font-display); color: var(--ink); letter-spacing: -.9px; margin: 0 0 10px; }
+h2 { font: 600 25px/1.25 var(--font-display); color: var(--ink); letter-spacing: -.4px;
+     margin: 52px 0 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+h3 { font: 600 18px/1.35 var(--font-display); color: var(--ink); margin: 30px 0 8px; }
+.lead { font-size: 19px; color: var(--muted); margin: 0 0 8px; }
+p { margin: 0 0 16px; max-width: 74ch; }
+a { color: var(--teal); text-underline-offset: 2px; }
+ul, ol { max-width: 74ch; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: var(--ink); font-weight: 600; }
+
+/* --- Code ---------------------------------------------------------------- */
+code { font: 13.5px/1.5 var(--font-mono); background: var(--warm);
+       padding: 2px 6px; border-radius: 5px; color: var(--ink); }
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 18px; overflow-x: auto; box-shadow: var(--shadow-sm); margin: 0 0 18px; }
+pre code { background: none; padding: 0; font-size: 13.5px; line-height: 1.62; color: var(--ink); }
+
+/* --- Tabellen ------------------------------------------------------------ */
+.tabelle { overflow-x: auto; margin: 0 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font: 600 12px/1.4 var(--font-mono); letter-spacing: .7px; text-transform: uppercase;
+     color: var(--faint); border-bottom: 1px solid var(--border-strong); }
+tbody tr:last-child td { border-bottom: none; }
+
+/* --- Hinweiskästen ------------------------------------------------------- */
+.hinweis, .achtung {
+  border-radius: var(--radius); padding: 14px 18px; margin: 0 0 20px; font-size: 15px;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.hinweis { border-left: 3px solid var(--teal); }
+.achtung { border-left: 3px solid var(--warn); background: var(--warn-tint); border-color: var(--warn-border); }
+.hinweis p:last-child, .achtung p:last-child { margin-bottom: 0; }
+.hinweis b, .achtung b { color: var(--ink); }
+
+/* --- Karten -------------------------------------------------------------- */
+.karten { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); margin: 0 0 22px; }
+.karte { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+         padding: 18px 20px; box-shadow: var(--shadow-sm); }
+.karte h3 { margin: 0 0 6px; font-size: 16px; }
+.karte p  { margin: 0; font-size: 14.5px; color: var(--muted); }
+a.karte { text-decoration: none; color: inherit; transition: border-color .18s, box-shadow .18s; }
+a.karte:hover { border-color: var(--teal); box-shadow: var(--shadow-md); }
+
+/* --- Bilder -------------------------------------------------------------- */
+figure { margin: 0 0 24px; }
+figure img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; }
+figcaption { margin-top: 8px; font-size: 13.5px; color: var(--faint); }
+.hero { width: 100%; border-radius: var(--radius-lg); display: block; margin-bottom: 26px; }
+
+/* --- Fußzeile ------------------------------------------------------------ */
+footer { border-top: 1px solid var(--border); margin-top: 60px; padding: 22px 0 0;
+         font-size: 14px; color: var(--faint); }
+footer a { color: var(--muted); }
+
+/* --- Schmal -------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: 1fr; gap: 26px; padding: 26px 18px 64px; }
+  aside { position: static; max-height: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  aside h4 { margin-top: 14px; }
+  h1 { font-size: 31px; }
+  .topbar nav { gap: 12px; }
+}

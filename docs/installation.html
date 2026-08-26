@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installation · EnterpriseAI</title>
+<meta name="description" content="Selbst betriebene KI-Assistenz für Unternehmen. Dokumentation zu Installation, Unternehmens-Konfiguration, Modulen und Datenklassifizierung.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="marke" href="index.html">Enterprise<span>AI</span></a>
+  <nav>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext</a>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI/releases">Ausgaben</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <aside>
+    <nav>
+      <h4>Einstieg</h4>
+      <a href="index.html">EnterpriseAI</a>
+      <a href="installation.html" aria-current="page">Installation</a>
+      <h4>Einrichten</h4>
+      <a href="unternehmen.html">Unternehmen</a>
+      <a href="module.html">Module</a>
+      <h4>Betreiben</h4>
+      <a href="sicherheit.html">Rechte &amp; Einstufung</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Installation</h1>
+    <p class="lead">Ein Befehl, dann läuft es.</p>
+
+
+    <h2>Voraussetzungen</h2>
+    <p>Ein Rechner mit Docker und Docker Compose. Für sinnvolle Antwortzeiten braucht das
+    Sprachmodell eine passende Maschine — das ist die eigentliche Anforderung, nicht die
+    Anwendung selbst.</p>
+
+    <h2>Starten</h2>
+<pre><code>git clone https://github.com/marvinhenrich/EnterpriseAI.git enterpriseai
+cd enterpriseai
+docker compose up -d</code></pre>
+
+    <p>Danach <code>https://&lt;Serveradresse&gt;:3443</code> aufrufen.</p>
+
+    <h3>Was beim ersten Start automatisch passiert</h3>
+    <div class="tabelle"><table>
+      <tbody>
+        <tr><td><b>Sicherheitsschlüssel</b></td><td>Für diese Installation erzeugt. Kein
+          ausgeliefertes Standardgeheimnis.</td></tr>
+        <tr><td><b>TLS</b></td><td>Selbstsigniertes Zertifikat, falls keines vorliegt.</td></tr>
+        <tr><td><b>Datenbank</b></td><td>Schema wird angelegt und bei Updates mitgewandert.</td></tr>
+        <tr><td><b>Administrator</b></td><td>Wird angelegt, Kennwort steht einmalig im Protokoll.</td></tr>
+        <tr><td><b>Sprachmodell</b></td><td>Ollama läuft im selben Verbund mit.</td></tr>
+      </tbody>
+    </table></div>
+
+<pre><code>docker compose logs app | grep -A3 "ERSTER ADMINISTRATOR"</code></pre>
+
+    <div class="hinweis"><p><b>Nach außen geht ausschließlich HTTPS.</b> Die Anwendung bindet
+    HTTP bewusst nur an die Loopback-Adresse, damit im Netz nichts unverschlüsselt unterwegs
+    ist. Ohne Zertifikat wäre sie also gar nicht erreichbar — deshalb wird eines erzeugt.</p></div>
+
+    <h2>Ollama läuft schon woanders</h2>
+    <p>Dann den Dienst <code>ollama</code> aus der Compose-Datei nehmen und die Adresse setzen:</p>
+<pre><code>OLLAMA_URL=http://mein-server:11434</code></pre>
+
+    <h2>Wo alles liegt</h2>
+    <p>Der Ordner <code>config/</code> enthält alles Installationsspezifische: Konfiguration,
+    Logo, Zertifikate, Datenbank und hochgeladene Dateien. <strong>Er wird bei Updates nie
+    angefasst</strong> und ist das Einzige, was gesichert werden muss.</p>
+
+    <h2>Aktualisieren</h2>
+<pre><code>bash deploy/update.sh</code></pre>
+    <p>Sichert zuerst <code>config/</code>, holt dann den neuen Stand, baut und startet durch.
+    Bricht ab, wenn es lokale Änderungen gibt, statt sie stillschweigend zu verwerfen.</p>
+
+
+    <footer>
+      <p>EnterpriseAI — <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext auf GitHub</a>.
+      Diese Seite wird direkt aus dem Repository ausgeliefert.</p>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>

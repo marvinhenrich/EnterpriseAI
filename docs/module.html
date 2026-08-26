@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module · EnterpriseAI</title>
+<meta name="description" content="Selbst betriebene KI-Assistenz für Unternehmen. Dokumentation zu Installation, Unternehmens-Konfiguration, Modulen und Datenklassifizierung.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="marke" href="index.html">Enterprise<span>AI</span></a>
+  <nav>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext</a>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI/releases">Ausgaben</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <aside>
+    <nav>
+      <h4>Einstieg</h4>
+      <a href="index.html">EnterpriseAI</a>
+      <a href="installation.html">Installation</a>
+      <h4>Einrichten</h4>
+      <a href="unternehmen.html">Unternehmen</a>
+      <a href="module.html" aria-current="page">Module</a>
+      <h4>Betreiben</h4>
+      <a href="sicherheit.html">Rechte &amp; Einstufung</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Module</h1>
+    <p class="lead">Was diese Installation anbietet.</p>
+
+
+    <h2>Der Kern lässt sich nicht abschalten</h2>
+    <p>Anmeldung, Chat und Berechtigungen sind kein Modul — ohne sie bliebe nichts übrig.
+    Alles andere kann ein Administrator unter <b>Administration → Module</b> abschalten. Dann
+    verschwindet es aus dem Menü, aus den Routen und aus den Werkzeugen der KI.</p>
+
+    <div class="hinweis"><p><b>Standard ist an.</b> Eine bestehende Installation verhält sich
+    nach dem Einbau exakt wie vorher; erst ein bewusstes Abschalten ändert etwas.</p></div>
+
+    <h2>Die Module</h2>
+    <h3>Wissen</h3>
+    <div class="tabelle"><table><tbody>
+      <tr><td><b>Wissens-Vault</b></td><td>Firmenwissen als durchsuchbare Notizen und Dokumente,
+        aus denen die KI belegt antwortet.</td></tr>
+      <tr><td><b>Projekte</b></td><td>Bündelt Chats, Dateien und Vorgaben zu einem Thema.</td></tr>
+      <tr><td><b>Gedächtnis</b></td><td>Merkt sich wiederkehrende Fakten über Nutzer und Projekte.</td></tr>
+    </tbody></table></div>
+
+    <h3>Dokumente</h3>
+    <div class="tabelle"><table><tbody>
+      <tr><td><b>Dateien</b></td><td>Hochladen und Auswerten von Dokumenten, Tabellen und Bildern.</td></tr>
+      <tr><td><b>Texterkennung</b></td><td>Liest Text aus Scans und Fotos. Offline, Tesseract wird mitgeliefert.</td></tr>
+      <tr><td><b>Dokumenterstellung</b></td><td>Erzeugt PDF und Word im eigenen Erscheinungsbild.</td></tr>
+      <tr><td><b>Tabellenauswertung</b></td><td>Wertet große Excel- und CSV-Dateien programmatisch
+        aus, statt sie in den Kontext zu kippen.</td></tr>
+    </tbody></table></div>
+
+    <h3>Fachanwendungen</h3>
+    <div class="tabelle"><table><tbody>
+      <tr><td><b>Etikettenprüfung</b></td><td>Prüft Druckdaten gegen eine Liste unzulässiger
+        Werbeaussagen.</td></tr>
+      <tr><td><b>Bildgenerierung</b></td><td>Erzeugt Bilder lokal. Braucht einen eigenen Bilddienst.</td></tr>
+    </tbody></table></div>
+
+    <h3>Betrieb</h3>
+    <div class="tabelle"><table><tbody>
+      <tr><td><b>Änderungsprotokoll</b></td><td>Wer wann was geändert hat.</td></tr>
+      <tr><td><b>Berichte</b></td><td>Monatsbericht über Nutzung, Antwortzeiten und Wissensbestand.</td></tr>
+      <tr><td><b>Rückmeldungen</b></td><td>Nutzer melden, was nicht passt — mit Bearbeitungsstand.</td></tr>
+      <tr><td><b>Datenklassifizierung</b></td><td>Siehe <a href="sicherheit.html">Rechte &amp; Einstufung</a>.</td></tr>
+      <tr><td><b>Chats teilen</b></td><td>Einzelne Gespräche für andere freigeben.</td></tr>
+    </tbody></table></div>
+
+    <p>Module mit Abhängigkeiten weisen darauf hin: Wird <i>Dateien</i> abgeschaltet, verlieren
+    <i>Texterkennung</i> und <i>Tabellenauswertung</i> ihre Grundlage.</p>
+
+
+    <footer>
+      <p>EnterpriseAI — <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext auf GitHub</a>.
+      Diese Seite wird direkt aus dem Repository ausgeliefert.</p>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>

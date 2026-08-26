@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unternehmen · EnterpriseAI</title>
+<meta name="description" content="Selbst betriebene KI-Assistenz für Unternehmen. Dokumentation zu Installation, Unternehmens-Konfiguration, Modulen und Datenklassifizierung.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="marke" href="index.html">Enterprise<span>AI</span></a>
+  <nav>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext</a>
+    <a href="https://github.com/marvinhenrich/EnterpriseAI/releases">Ausgaben</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <aside>
+    <nav>
+      <h4>Einstieg</h4>
+      <a href="index.html">EnterpriseAI</a>
+      <a href="installation.html">Installation</a>
+      <h4>Einrichten</h4>
+      <a href="unternehmen.html" aria-current="page">Unternehmen</a>
+      <a href="module.html">Module</a>
+      <h4>Betreiben</h4>
+      <a href="sicherheit.html">Rechte &amp; Einstufung</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Unternehmen</h1>
+    <p class="lead">Name, Betreiber, Farbe und Sprache — ohne Neustart.</p>
+
+
+    <h2>Wo es steht</h2>
+    <p><b>Administration → Unternehmen.</b> Nur für Administratoren.</p>
+
+    <p>Name, Betreiber, Markenfarbe und Sprache lagen früher ausschließlich in
+    Umgebungsvariablen. Eine Umbenennung hieß: Datei bearbeiten, Dienst neu starten — also ein
+    Termin mit der IT für eine Änderung, die zwei Minuten dauert. Jetzt wirkt sie sofort.</p>
+
+    <div class="tabelle"><table>
+      <thead><tr><th>Feld</th><th>Wirkt sich aus auf</th></tr></thead>
+      <tbody>
+        <tr><td><b>Name der Anwendung</b></td><td>Titel, Kopfzeile, erzeugte Dokumente</td></tr>
+        <tr><td><b>Kurzform</b></td><td>Enge Stellen. Leer lassen heißt: wie der volle Name.</td></tr>
+        <tr><td><b>Betreiber</b></td><td>Erscheint auf erzeugten Dokumenten</td></tr>
+        <tr><td><b>Markenfarbe</b></td><td>Akzentfarbe der gesamten Oberfläche</td></tr>
+        <tr><td><b>Sprache</b></td><td>Deutsch oder Englisch, für die ganze Installation</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Warum die Sprache nicht pro Benutzer gilt</h2>
+    <p>In einem Betrieb sprechen alle dieselbe Sprache, und Beschriftungen, über die man sich am
+    Telefon verständigt, sollen bei allen gleich heißen. Wer „geh mal auf Wissens-Vault" sagt,
+    soll nicht erklären müssen, dass das beim anderen „Knowledge vault" heißt.</p>
+
+    <div class="hinweis"><p><b>Deutsch ist Vorgabe und Referenz.</b> Fehlt ein englischer Text,
+    erscheint der deutsche — nie ein leerer Kasten und nie ein roher Schlüssel. Eine Lücke soll
+    auffallen, aber nichts zerstören.</p></div>
+
+    <h2>Vorrang der Werte</h2>
+    <p>Was in der Datenbank steht, gewinnt. Ist dort nichts gesetzt, gilt die Umgebungsvariable.
+    Eine bestehende Installation verhält sich nach dem Update also exakt wie vorher, und niemand
+    muss etwas nachtragen.</p>
+
+    <h2>Logo</h2>
+    <p>Eine Datei <code>logo.png</code> im Ordner <code>config/assets/</code> ablegen. Sie wird
+    ohne Neustart übernommen und erscheint auf der Anmeldeseite und in erzeugten Dokumenten.</p>
+
+
+    <footer>
+      <p>EnterpriseAI — <a href="https://github.com/marvinhenrich/EnterpriseAI">Quelltext auf GitHub</a>.
+      Diese Seite wird direkt aus dem Repository ausgeliefert.</p>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>
