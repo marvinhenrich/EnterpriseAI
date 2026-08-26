@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-labelledby="t d">
+  <title id="t">EnterpriseAI</title>
+  <desc id="d">Dokumente, Sprachmodell und Antworten bleiben innerhalb der Unternehmensgrenze. Nichts geht nach außen.</desc>
+
+  <style>
+    .sans { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .paper { fill: #FAF9F5; }
+    .card  { fill: #FFFFFF; }
+    .line  { stroke: #E6E2D8; }
+    .ink   { fill: #17181B; }
+    .body  { fill: #474C55; }
+    .muted { fill: #6A6F79; }
+    .faint { fill: #8C919A; }
+    .teal  { fill: #0F6E56; }
+    .tealstroke { stroke: #0F6E56; }
+    .warn  { fill: #A8431F; }
+    .warnstroke { stroke: #A8431F; }
+
+    @media (prefers-color-scheme: dark) {
+      .paper { fill: #141513; }
+      .card  { fill: #1C1E1B; }
+      .line  { stroke: #2E312C; }
+      .ink   { fill: #F0EFE9; }
+      .body  { fill: #C2C1B8; }
+      .muted { fill: #8B8A80; }
+      .faint { fill: #6F6E66; }
+      .teal  { fill: #45C47C; }
+      .tealstroke { stroke: #45C47C; }
+      .warn  { fill: #E0A271; }
+      .warnstroke { stroke: #E0A271; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orbit { display: none; }
+      .rest  { opacity: 1; }
+    }
+  </style>
+
+  <rect width="1200" height="300" class="paper"/>
+  <rect x="0" y="0" width="1200" height="3" class="teal"/>
+
+  <text x="72" y="132" class="sans ink" font-size="46" font-weight="600" letter-spacing="-1">EnterpriseAI</text>
+  <text x="72" y="170" class="sans body" font-size="19">Selbst betriebene KI-Assistenz — auf eigener Hardware, ohne Cloud.</text>
+  <text x="72" y="200" class="sans muted" font-size="16">Self-hosted AI assistance — your own hardware, no cloud.</text>
+
+  <text x="74" y="238" class="mono muted" font-size="13">docker compose up -d</text>
+  <rect x="66" y="222" width="200" height="22" rx="6" fill="none" class="line" stroke-width="1"/>
+
+  <!-- Unternehmensgrenze: alles Wesentliche liegt darin -->
+  <g transform="translate(680,42)">
+    <rect x="0" y="0" width="330" height="216" rx="18" class="card"/>
+    <rect x="0" y="0" width="330" height="216" rx="18" fill="none" class="tealstroke" stroke-width="2" opacity=".55"/>
+    <text x="16" y="26" class="mono teal" font-size="12" font-weight="600" letter-spacing="1">EIGENES NETZ</text>
+
+    <!-- Dokumente -->
+    <g class="line" stroke-width="1.5" fill="none">
+      <rect x="26" y="62" width="42" height="54" rx="5" class="card" stroke="#E6E2D8"/>
+      <rect x="26" y="62" width="42" height="54" rx="5"/>
+      <path d="M34 78h26M34 88h26M34 98h16"/>
+    </g>
+    <g class="line" stroke-width="1.5" fill="none">
+      <rect x="26" y="128" width="42" height="54" rx="5" class="card" stroke="#E6E2D8"/>
+      <rect x="26" y="128" width="42" height="54" rx="5"/>
+      <path d="M34 144h26M34 154h26M34 164h16"/>
+    </g>
+
+    <!-- Modellkern -->
+    <g transform="translate(175,122)">
+      <circle r="42" class="teal" opacity=".10"/>
+      <circle r="42" fill="none" class="tealstroke" stroke-width="1.5" opacity=".5"/>
+      <circle r="10" class="teal"/>
+      <!-- Bewegung nur hier: der Kreislauf bleibt INNERHALB der Grenze -->
+      <g class="orbit">
+        <circle r="4" class="teal" opacity=".85">
+          <animateMotion dur="5s" repeatCount="indefinite" calcMode="spline"
+            keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"
+            path="M -70 0 L -14 0 L -70 0"/>
+        </circle>
+        <circle r="4" class="teal" opacity=".85">
+          <animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" calcMode="spline"
+            keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"
+            path="M 14 0 L 74 0 L 14 0"/>
+        </circle>
+      </g>
+      <text x="0" y="66" text-anchor="middle" class="mono muted" font-size="11">lokales Modell</text>
+    </g>
+
+    <!-- Antwort mit Beleg -->
+    <g transform="translate(258,62)">
+      <rect x="0" y="0" width="48" height="54" rx="5" class="card"/>
+      <rect x="0" y="0" width="48" height="54" rx="5" fill="none" class="line" stroke-width="1.5"/>
+      <path d="M9 16h30M9 26h30M9 36h18" fill="none" class="line" stroke-width="1.5"/>
+      <circle cx="39" cy="44" r="6" class="teal"/>
+    </g>
+    <text x="282" y="134" text-anchor="middle" class="mono muted" font-size="11">Antwort</text>
+    <text x="282" y="149" text-anchor="middle" class="mono muted" font-size="11">mit Beleg</text>
+  </g>
+
+  <!-- Aussen: die Cloud, die bewusst nicht angebunden ist.
+       Silhouette aus ueberlappenden Kreisen plus Sockel - als Umriss gezeichnet
+       waren die Boegen nicht als Wolke zu erkennen. -->
+  <g transform="translate(1048,124)">
+    <g class="warn" opacity=".22">
+      <circle cx="22" cy="30" r="15"/>
+      <circle cx="42" cy="22" r="20"/>
+      <circle cx="64" cy="32" r="14"/>
+      <rect x="20" y="30" width="46" height="16" rx="8"/>
+    </g>
+    <path d="M12 54 L74 6" class="warnstroke" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+    <text x="43" y="74" text-anchor="middle" class="mono warn" font-size="11" opacity=".85">keine Cloud</text>
+  </g>
+</svg>

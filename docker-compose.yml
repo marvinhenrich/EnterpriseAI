@@ -1,0 +1,73 @@
+# =============================================================================
+#  EnterpriseAI — kompletter Stapel
+# =============================================================================
+#
+#  Start:   docker compose up -d
+#  Aufruf:  https://<Adresse-des-Servers>:3443
+#
+#  Mehr braucht es nicht. Keine .env bearbeiten, kein Geheimnis ausdenken:
+#
+#   * Der Dienst "init" legt beim ALLERERSTEN Start den Konfigurationsordner an
+#     und erzeugt einen eigenen Sicherheitsschlüssel für diese Installation.
+#   * Datenbank und Schema entstehen beim Start der Anwendung.
+#   * Name, Betreiber, Farbe und Sprache stellt ein Administrator anschließend
+#     in der Oberfläche ein (Administration → Unternehmen) — keine Datei nötig.
+#
+#  Anpassen lässt sich alles über config/.env (siehe .env.example), nötig ist
+#  es nicht. Der Ordner ./config bleibt bei Aktualisierungen unberührt.
+# =============================================================================
+
+name: enterpriseai
+
+services:
+  # --- Konfiguration und Geheimnis anlegen (läuft einmal, dann fertig) -------
+  init:
+    image: alpine:3.20
+    volumes:
+      - ./config:/config
+      - ./deploy/secrets-init.sh:/init.sh:ro
+    environment:
+      PUBLIC_HOSTNAME: ${PUBLIC_HOSTNAME:-enterpriseai.local}
+    command: ["sh", "/init.sh"]
+    restart: "no"
+
+  # --- Anwendung ------------------------------------------------------------
+  app:
+    build: .
+    image: enterpriseai:latest
+    restart: unless-stopped
+    ports:
+      # Nach aussen ausschliesslich HTTPS: die Anwendung bindet HTTP bewusst nur
+      # an Loopback, damit im Netz nichts unverschluesselt unterwegs ist.
+      - "${HTTPS_PORT:-3443}:3443"
+    volumes:
+      # Konfiguration, Logo, Zertifikate, Datenbank, hochgeladene Dateien.
+      # Alles Installationsspezifische liegt hier und nur hier.
+      - ./config:/config
+    environment:
+      # Sprachmodell. Standard ist der Dienst "ollama" aus diesem Verbund.
+      # Läuft Ollama bereits auf dem Wirtssystem, hier dorthin zeigen.
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+      # Zertifikat und Schluessel legt der init-Dienst an, falls keine vorliegen.
+      HTTPS_PORT: 3443
+      TLS_CERT_PATH: /config/certs/cert.pem
+      TLS_KEY_PATH: /config/certs/key.pem
+      PUBLIC_HOSTNAME: ${PUBLIC_HOSTNAME:-enterpriseai.local}
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # --- Sprachmodell ---------------------------------------------------------
+  # Weglassen, wenn Ollama schon anderswo läuft — dann OLLAMA_URL setzen.
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+
+volumes:
+  ollama-models:   # heruntergeladene Sprachmodelle (mehrere Gigabyte)

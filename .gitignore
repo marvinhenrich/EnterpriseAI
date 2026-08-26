@@ -1,0 +1,35 @@
+# Abhaengigkeiten
+node_modules/
+
+# Bauartefakte
+dist/
+build/
+*.tsbuildinfo
+
+# Konfiguration und Geheimnisse - gehoeren NIE ins Repository
+.env
+.env.local
+/config/          # nur der Konfigurationsordner der Installation, nicht src/config
+
+# Laufzeitdaten: Datenbank, Uploads, Protokolle
+apps/server/data/
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+
+# Zertifikate und Schluessel
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Modelle und Sprachdaten (werden nachgeladen)
+*.joblib
+tessdata/
+
+# Betriebssystem / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

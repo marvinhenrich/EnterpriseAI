@@ -1,0 +1,21 @@
+{
+  "name": "enterpriseai",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Selbst betriebene KI-Assistenz für Unternehmen — modular, ohne Cloud",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @enterpriseai/server",
+    "build": "npm run build --workspaces --if-present",
+    "db:generate": "npm run db:generate --workspace @enterpriseai/server",
+    "db:migrate": "npm run db:migrate --workspace @enterpriseai/server",
+    "start": "npm run start --workspace @enterpriseai/server"
+  }
+}

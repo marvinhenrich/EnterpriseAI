@@ -1,0 +1,223 @@
+@import 'tailwindcss';
+
+/* =============================================================================
+   Design-System (Light, minimalistisch, enterprise)
+   Tokens via Tailwind v4 @theme. Eine ruhige neutrale Skala + ein Akzent-Blau.
+   ============================================================================= */
+@theme {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f4f7;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d6dae1;
+  --color-fg: #1a1d23;
+  --color-muted: #667085;
+  --color-faint: #98a2b3;
+
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-soft: #eef2ff;
+  --color-ring: rgba(37, 99, 235, 0.16);
+
+  --color-success: #15803d;
+  --color-danger: #b91c1c;
+  --color-warn: #b45309;
+
+  /* Kantiger und flacher: weiche Radien und tiefe Schatten wirken verspielt.
+     Enterprise heißt ruhige Flächen mit klaren Kanten. */
+  --radius-card: 8px;
+  --shadow-soft: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.04);
+  --shadow-pop: 0 4px 16px rgba(16, 24, 40, 0.10), 0 1px 3px rgba(16, 24, 40, 0.06);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Basis ----------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dezente, schlanke Scrollbars (enterprise) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-faint);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+}
+
+/* --- Fokus-Ringe ----------------------------------------------------------- */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-ring);
+  border-radius: 8px;
+}
+
+/* --- Markdown-Inhalt (Assistant-Antworten) -------------------------------- */
+.prose-chat {
+  line-height: 1.62;
+  font-size: 14.5px;
+  word-break: break-word;
+}
+.prose-chat > *:first-child {
+  margin-top: 0;
+}
+.prose-chat > *:last-child {
+  margin-bottom: 0;
+}
+.prose-chat p {
+  margin: 0.55em 0;
+}
+.prose-chat h1,
+.prose-chat h2,
+.prose-chat h3 {
+  font-weight: 640;
+  line-height: 1.3;
+  margin: 1.1em 0 0.5em;
+}
+.prose-chat h1 {
+  font-size: 1.3em;
+}
+.prose-chat h2 {
+  font-size: 1.15em;
+}
+.prose-chat h3 {
+  font-size: 1.03em;
+}
+.prose-chat ul,
+.prose-chat ol {
+  margin: 0.5em 0;
+  padding-left: 1.4em;
+}
+.prose-chat li {
+  margin: 0.2em 0;
+}
+.prose-chat a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-chat code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--color-surface-2);
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+}
+.prose-chat pre {
+  background: #0f1320;
+  color: #e6e9f0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 0.7em 0;
+  font-size: 13px;
+}
+.prose-chat pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+.prose-chat blockquote {
+  border-left: 3px solid var(--color-border-strong);
+  margin: 0.7em 0;
+  padding-left: 0.9em;
+  color: var(--color-muted);
+}
+.prose-chat table {
+  border-collapse: collapse;
+  margin: 0.7em 0;
+  font-size: 13px;
+}
+.prose-chat th,
+.prose-chat td {
+  border: 1px solid var(--color-border);
+  padding: 6px 10px;
+  text-align: left;
+}
+.prose-chat th {
+  background: var(--color-surface-2);
+}
+
+/* --- Code-Highlight (kompaktes Dark-on-Pre, github-dark-ähnlich) ----------- */
+.hljs-comment,
+.hljs-quote {
+  color: #8b949e;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #ff7b72;
+}
+.hljs-string,
+.hljs-attr {
+  color: #a5d6ff;
+}
+.hljs-number,
+.hljs-literal {
+  color: #79c0ff;
+}
+.hljs-title,
+.hljs-function .hljs-title,
+.hljs-section {
+  color: #d2a8ff;
+}
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #ffa657;
+}
+
+/* --- Animationen ----------------------------------------------------------- */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.cursor-blink::after {
+  content: '▍';
+  margin-left: 1px;
+  animation: blink 1s steps(2) infinite;
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

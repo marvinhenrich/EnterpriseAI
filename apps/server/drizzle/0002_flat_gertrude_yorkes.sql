@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `can_select_model` integer DEFAULT false NOT NULL;
