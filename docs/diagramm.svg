@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="640 20 500 260" width="500" height="260" role="img" aria-labelledby="t d">
+  <title id="t">Alles bleibt im eigenen Netz</title>
+  <desc id="d">Dokumente, Sprachmodell und Antworten bleiben innerhalb der Unternehmensgrenze. Nichts geht nach außen.</desc>
+
+  <style>
+    .sans { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .paper { fill: #FAF9F5; }
+    .card  { fill: #FFFFFF; }
+    .line  { stroke: #E6E2D8; }
+    .ink   { fill: #17181B; }
+    .body  { fill: #474C55; }
+    .muted { fill: #6A6F79; }
+    .faint { fill: #8C919A; }
+    .teal  { fill: #0F6E56; }
+    .tealstroke { stroke: #0F6E56; }
+    .warn  { fill: #A8431F; }
+    .warnstroke { stroke: #A8431F; }
+
+    @media (prefers-color-scheme: dark) {
+      .paper { fill: #141513; }
+      .card  { fill: #1C1E1B; }
+      .line  { stroke: #2E312C; }
+      .ink   { fill: #F0EFE9; }
+      .body  { fill: #C2C1B8; }
+      .muted { fill: #8B8A80; }
+      .faint { fill: #6F6E66; }
+      .teal  { fill: #45C47C; }
+      .tealstroke { stroke: #45C47C; }
+      .warn  { fill: #E0A271; }
+      .warnstroke { stroke: #E0A271; }
+    }
+
+    /* Reine Zugabe: der Kreislauf INNERHALB der Grenze. Ohne Bewegung
+       schlicht nicht da - der Rest des Bildes steht trotzdem vollstaendig.
+       CSS statt SMIL, sonst greift prefers-reduced-motion nicht. */
+    @keyframes pendeln {
+       0%       { opacity: 0; transform: translateX(0); }
+       8%       { opacity: .85; }
+      46%       { opacity: .85; transform: translateX(56px); }
+      54%       { opacity: .85; transform: translateX(56px); }
+      92%       { opacity: .85; transform: translateX(0); }
+     100%       { opacity: 0;  transform: translateX(0); }
+    }
+    .orbit-a, .orbit-b { opacity: 0; animation: pendeln 5s ease-in-out infinite; }
+    .orbit-b { animation-delay: 2.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orbit-a, .orbit-b { animation: none; }
+    }
+  </style>
+
+
+
+
+  <!-- Unternehmensgrenze: alles Wesentliche liegt darin -->
+  <g transform="translate(680,42)">
+    <rect x="0" y="0" width="330" height="216" rx="18" class="card"/>
+    <rect x="0" y="0" width="330" height="216" rx="18" fill="none" class="tealstroke" stroke-width="2" opacity=".55"/>
+    <text x="16" y="26" class="mono teal" font-size="12" font-weight="600" letter-spacing="1">EIGENES NETZ</text>
+
+    <!-- Dokumente -->
+    <g class="line" stroke-width="1.5" fill="none">
+      <rect x="26" y="62" width="42" height="54" rx="5" class="card" stroke="#E6E2D8"/>
+      <rect x="26" y="62" width="42" height="54" rx="5"/>
+      <path d="M34 78h26M34 88h26M34 98h16"/>
+    </g>
+    <g class="line" stroke-width="1.5" fill="none">
+      <rect x="26" y="128" width="42" height="54" rx="5" class="card" stroke="#E6E2D8"/>
+      <rect x="26" y="128" width="42" height="54" rx="5"/>
+      <path d="M34 144h26M34 154h26M34 164h16"/>
+    </g>
+
+    <!-- Modellkern -->
+    <g transform="translate(175,122)">
+      <circle r="42" class="teal" opacity=".10"/>
+      <circle r="42" fill="none" class="tealstroke" stroke-width="1.5" opacity=".5"/>
+      <circle r="10" class="teal"/>
+      <!-- Zugabe: zeigt, dass der Kreislauf die Grenze nicht verlaesst. -->
+      <circle class="orbit-a teal" cx="-70" cy="0" r="4"/>
+      <circle class="orbit-b teal" cx="14" cy="0" r="4"/>
+      <text x="0" y="66" text-anchor="middle" class="mono muted" font-size="11">lokales Modell</text>
+    </g>
+
+    <!-- Antwort mit Beleg -->
+    <g transform="translate(258,62)">
+      <rect x="0" y="0" width="48" height="54" rx="5" class="card"/>
+      <rect x="0" y="0" width="48" height="54" rx="5" fill="none" class="line" stroke-width="1.5"/>
+      <path d="M9 16h30M9 26h30M9 36h18" fill="none" class="line" stroke-width="1.5"/>
+      <circle cx="39" cy="44" r="6" class="teal"/>
+    </g>
+    <text x="282" y="134" text-anchor="middle" class="mono muted" font-size="11">Antwort</text>
+    <text x="282" y="149" text-anchor="middle" class="mono muted" font-size="11">mit Beleg</text>
+  </g>
+
+  <!-- Aussen: die Cloud, die bewusst nicht angebunden ist.
+       Silhouette aus ueberlappenden Kreisen plus Sockel - als Umriss gezeichnet
+       waren die Boegen nicht als Wolke zu erkennen. -->
+  <g transform="translate(1048,124)">
+    <g class="warn" opacity=".22">
+      <circle cx="22" cy="30" r="15"/>
+      <circle cx="42" cy="22" r="20"/>
+      <circle cx="64" cy="32" r="14"/>
+      <rect x="20" y="30" width="46" height="16" rx="8"/>
+    </g>
+    <path d="M12 54 L74 6" class="warnstroke" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+    <text x="43" y="74" text-anchor="middle" class="mono warn" font-size="11" opacity=".85">keine Cloud</text>
+  </g>
+</svg>
