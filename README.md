@@ -3,6 +3,7 @@
 **Selbst betriebene KI-Assistenz für Unternehmen — auf eigener Hardware, ohne Cloud.**
 *Self-hosted AI assistance — your own hardware, no cloud.*
 
+[![Dokumentation](https://img.shields.io/badge/Dokumentation-marvinhenrich.github.io-0F6E56.svg)](https://marvinhenrich.github.io/EnterpriseAI/)
 [![Lizenz: PolyForm Noncommercial](https://img.shields.io/badge/Lizenz-PolyForm%20Noncommercial-orange.svg)](LICENSE)
 ![Docker](https://img.shields.io/badge/Docker-compose%20up%20--d-lightgrey.svg)
 ![Stack](https://img.shields.io/badge/TypeScript-React%20%C2%B7%20Hono%20%C2%B7%20SQLite-lightgrey.svg)
